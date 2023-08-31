@@ -1,0 +1,20 @@
+import boto3
+
+#script to list stack
+#then filter acc to number and get the number then display 3 names
+
+......
+
+
+# Get the AWS session
+session = boto3.Session()
+
+# Get the Cloudformation client
+client = session.client('cloudformation')
+
+# Get the list of stacks
+stacks = client.list_stacks()
+
+# For each stack, delete it
+for stack in stacks['Stacks']:
+    client.delete_stack(StackName=stack['StackName'])

@@ -1,0 +1,15 @@
+import boto3
+
+# Create a CloudFormation client
+client = boto3.client('cloudformation')
+
+# Get a list of all the stacks
+stacks = client.list_stacks()
+
+# Filter the stacks by the target number
+target_number = '590955747733'
+filtered_stacks = [stack for stack in stacks if target_number in stack['Parameters']]
+
+# Print the names of the filtered stacks
+for stack in filtered_stacks:
+    print(stack['StackName'])
